@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A personal library for free learning videos and recorded sessions.">
+  <title>Free Learning Hub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar bg-white border-bottom sticky-top">
+    <div class="container py-1">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#">
+        <span class="brand-icon">▶</span> FREE LEARNING HUB
+      </a>
+      <span class="badge text-bg-success rounded-pill">Free content</span>
+    </div>
+  </nav>
+
+  <main class="container py-4 py-lg-5">
+    <section class="hero p-4 p-lg-5 mb-4">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <p class="eyebrow">YOUR PERSONAL VIDEO LIBRARY</p>
+          <h1 class="display-6 fw-bold mb-3">Learn at your own pace.</h1>
+          <p class="lead text-white-50 mb-0">All your shared YouTube videos in one place. Search, save favorites, track watched videos, and continue learning.</p>
+        </div>
+        <div class="col-lg-4">
+          <div class="stats-panel rounded-4 p-3">
+            <div class="small text-white-50">VIDEOS IN YOUR LIBRARY</div>
+            <div class="display-5 fw-bold" id="totalCount">49</div>
+            <div class="small text-white-50"><span id="watchedCount">0</span> watched · <span id="favoriteCount">0</span> favorites</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="d-flex flex-column flex-lg-row gap-3 justify-content-between align-items-lg-center mb-3">
+      <div>
+        <h2 class="h4 fw-bold mb-1">Explore videos</h2>
+        <p class="text-secondary mb-0"><span id="shownCount">49</span> videos shown</p>
+      </div>
+      <div class="search-box w-100">
+        <label for="searchInput" class="visually-hidden">Search videos</label>
+        <input id="searchInput" class="form-control form-control-lg" type="search" placeholder="🔎 Search by title or video ID...">
+      </div>
+    </section>
+
+    <div class="d-flex flex-wrap gap-2 mb-4" id="filters">
+      <button class="btn btn-outline-secondary rounded-pill filter-btn active" data-filter="All">All videos</button>
+      <button class="btn btn-outline-secondary rounded-pill filter-btn" data-filter="Free Videos">Free videos</button>
+      <button class="btn btn-outline-secondary rounded-pill filter-btn" data-filter="Beauty Session">Beauty session</button>
+      <button class="btn btn-outline-secondary rounded-pill filter-btn" data-filter="Live Recordings">Live recordings</button>
+      <button class="btn btn-outline-danger rounded-pill filter-btn" data-filter="Favorites">♥ Favorites</button>
+      <button class="btn btn-outline-primary rounded-pill filter-btn" data-filter="Watched">✓ Watched</button>
+    </div>
+
+    <section id="continueSection" class="mb-4 d-none">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h2 class="h5 fw-bold mb-0">Continue learning</h2>
+        <button class="btn btn-sm btn-link" id="clearHistory">Clear watch history</button>
+      </div>
+      <div class="row g-3" id="continueGrid"></div>
+    </section>
+
+    <div class="row g-3 g-lg-4" id="videoGrid"></div>
+    <div class="text-center py-5 d-none" id="emptyState">
+      <div class="display-4 mb-2">🔍</div>
+      <h3 class="h5 fw-bold">No videos found</h3>
+      <p class="text-secondary">Try another search or category.</p>
+    </div>
+
+    <footer class="text-center small mt-5 pt-4 border-top">
+      Independent video-organizing page. YouTube thumbnails and playback need an internet connection. Some videos may not allow embedded playback.
+    </footer>
+  </main>
+
+  <div class="modal fade" id="playerModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content border-0 rounded-4 overflow-hidden">
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title fs-6 fw-bold" id="playerTitle">Now playing</h2>
+            <div class="small text-secondary" id="playerCategory"></div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0 bg-dark">
+          <div class="ratio ratio-16x9"><iframe id="playerFrame" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-danger" id="markWatchedBtn">✓ Mark as watched</button>
+          <a id="openYoutube" class="btn btn-danger" href="#" target="_blank" rel="noopener">Open on YouTube ↗</a>
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="videos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
